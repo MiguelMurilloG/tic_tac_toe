@@ -58,3 +58,13 @@ def get_move(player, board_size):
             return row, col
         except ValueError as e:
             print(f"Invalid input: {e}. Please try again.")
+
+def make_move(board, row, col, player):
+    """
+    Places the player's move on the board if the spot is empty.
+    """
+    if board[row][col] == " ":
+        board[row][col] = player
+        return True
+    return False
+
