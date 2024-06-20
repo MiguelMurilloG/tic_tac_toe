@@ -82,7 +82,22 @@ def announce_tie():
 
 def play_game():
     print_welcome_message()
-    n = get_board_size()
+    n = get_board_size()git 
     board = [[" " for _ in range(n)] for _ in range(n)]
     players = ["X", "O"]
     current_player = 0
+
+    for turn in range(n * n):
+        print_board(board)
+        row, col = get_move(players[current_player], n)
+        if make_move(board, row, col, players[current_player]):
+            if check_winner(board, players[current_player]):
+                print_board(board)
+                announce_winner(players[current_player])
+                return
+            current_player = 1 - current_player
+        else:
+            print("This spot is already taken. Try again.")
+
+    print_board(board)
+    announce_tie()
