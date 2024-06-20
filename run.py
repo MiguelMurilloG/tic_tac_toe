@@ -44,3 +44,17 @@ def get_board_size():
             return n
         except ValueError as e:
             print(f"Invalid input: {e}. Please try again.")
+
+def get_move(player, board_size):
+    """
+    Prompts the player to enter their move and validates the input.
+    """
+    while True:
+        try:
+            row = int(input(f"Player {player}, enter the row (0 to {board_size-1}): "))
+            col = int(input(f"Player {player}, enter the column (0 to {board_size-1}): "))
+            if row < 0 or row >= board_size or col < 0 or col >= board_size:
+                raise ValueError(f"Row and column must be between 0 and {board_size-1}.")
+            return row, col
+        except ValueError as e:
+            print(f"Invalid input: {e}. Please try again.")
