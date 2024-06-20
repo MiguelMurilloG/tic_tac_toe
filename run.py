@@ -68,3 +68,14 @@ def make_move(board, row, col, player):
         return True
     return False
 
+def announce_winner(player):
+    """
+    Announces the winner of the game.
+    """
+    print(f"Player {player} wins!")
+
+def announce_tie():
+    """
+    Announces a tie.
+    """
+    print("It's a tie!")
