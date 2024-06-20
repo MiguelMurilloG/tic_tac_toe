@@ -16,3 +16,18 @@ def print_board(board):
     for row in board:
         print(" | ".join(row))
         print("-" * (n * 2 - 1))
+        
+def check_winner(board, player):
+    """
+    Checks if the current player has won the game.
+    """
+    n = len(board)
+    for row in board:
+        if all([cell == player for cell in row]):
+            return True
+    for col in range(n):
+        if all([board[row][col] == player for row in range(n)]):
+            return True
+    if all([board[i][i] == player for i in range(n)]) or all([board[i][n - 1 - i] == player for i in range(n)]):
+        return True
+    return False
