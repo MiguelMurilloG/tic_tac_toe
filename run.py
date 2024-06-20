@@ -79,3 +79,10 @@ def announce_tie():
     Announces a tie.
     """
     print("It's a tie!")
+
+def play_game():
+    print_welcome_message()
+    n = get_board_size()
+    board = [[" " for _ in range(n)] for _ in range(n)]
+    players = ["X", "O"]
+    current_player = 0
