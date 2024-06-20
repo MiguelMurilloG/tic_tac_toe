@@ -16,7 +16,7 @@ def print_board(board):
     for row in board:
         print(" | ".join(row))
         print("-" * (n * 2 - 1))
-        
+
 def check_winner(board, player):
     """
     Checks if the current player has won the game.
@@ -31,3 +31,16 @@ def check_winner(board, player):
     if all([board[i][i] == player for i in range(n)]) or all([board[i][n - 1 - i] == player for i in range(n)]):
         return True
     return False
+
+def get_board_size():
+    """
+    Prompts the user to enter the board size and validates the input.
+    """
+    while True:
+        try:
+            n = int(input("Enter the size of the board (n for n x n): "))
+            if n <= 0:
+                raise ValueError("The size must be a positive integer.")
+            return n
+        except ValueError as e:
+            print(f"Invalid input: {e}. Please try again.")
