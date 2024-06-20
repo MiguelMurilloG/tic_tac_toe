@@ -82,7 +82,7 @@ def announce_tie():
 
 def play_game():
     print_welcome_message()
-    n = get_board_size()git 
+    n = get_board_size()
     board = [[" " for _ in range(n)] for _ in range(n)]
     players = ["X", "O"]
     current_player = 0
@@ -101,3 +101,12 @@ def play_game():
 
     print_board(board)
     announce_tie()
+
+    
+def tic_tac_toe():
+    while True:
+        play_game()
+        play_again = input("Do you want to play again? (y/n): ").strip().lower()
+        if play_again != 'y':
+            print("Thanks for playing Tic Tac Toe!")
+            break
