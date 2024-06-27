@@ -57,10 +57,14 @@ def get_move(player, board):
             if board[row][col] == " ":
                 return row, col
             else:
-                print("\nInvalid entry: This cell is already occupied. "
-                      "Please enter another number.")
+                print(
+                    "\nInvalid entry: This cell is already occupied. "
+                    "Please enter another number."
+                )
         except ValueError:
-            print("\nInvalid entry: Please enter a valid number between 1 and 9.")
+            print(
+                "\nInvalid entry: Please enter a valid number between 1 and 9."
+            )
 
 
 def computer_move(board):
@@ -83,15 +87,18 @@ def play_game():
         else:
             print("\nComputer is making its move...\n")
             row, col = computer_move(board)
-            print(f"Computer has chosen to place their O in cell {row * 3 + col + 1}.\n")
-        
+            print(
+                "Computer has chosen to place their O in cell "
+                f"{row * 3 + col + 1}.\n"
+            )
+
         board[row][col] = players[current_player]
 
         if check_winner(board, players[current_player]):
             print_board(board)
             print(f"\nPlayer {players[current_player]} wins!\n")
             return
-        
+
         current_player = 1 - current_player
 
     print_board(board)

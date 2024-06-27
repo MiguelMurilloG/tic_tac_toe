@@ -15,9 +15,52 @@ Tic Tac Toe is a classic two-player game implemented in Python. The objective is
 - [You can view the Github page here](https://github.com/MiguelMurilloG/tic_tac_toe.git)
 
 ---
+
+## Existing Features
+
+### Instructions
+
+- Choose the size of the board (e.g., 3 for a 3x3 board).
+- Players take turns entering their moves by specifying the row and column.
+- The first player to get their marks in a row, column, or diagonal wins.
+- If all cells are filled and no player has won, the game ends in a tie.
+
+![Screenshot from heroku app](docs/instructions-game.png)
+
+### Win Message
+
+- Player Wins: "Player X/O wins!"
+- Tie Message: "It's a tie!"
+
+![Screenshot from heroku app](docs/win-message.png)
+
+
+
+---
+## Possible Features
+
+### Leaderboard:
+
+- Track and display high scores or win counts for each player.
+- Store player names and their win counts in a file or database.
+
+### Multiple Game Modes:
+
+- Add different game modes such as Classic, Timed, and Challenge modes.
+- Timed mode could limit the amount of time a player has to make a move.
+
+### AI Difficulty Levels:
+
+- Implement multiple levels of AI difficulty: Easy, Medium, Hard.
+- Adjust the computer's strategy based on the selected difficulty level.
+
+
+---
 ## Bugs
-- Fixed index errors by adjusting for zero indexing.
 - Corrected the input validation function structure.
+
+![Screenshot from PEP8](docs/python-linter.png)
+
 
 ## Remaining Bugs
 No known bugs.
