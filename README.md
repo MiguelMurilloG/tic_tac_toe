@@ -16,6 +16,22 @@ Tic Tac Toe is a classic two-player game implemented in Python. The objective is
 
 ---
 
+## Site Goals
+
+### Challenge and Reward:
+
+- Provide a game that engages players with strategic challenges and rewards their efforts.
+
+### Entertainment:
+
+- Entertain users with interactive text-based gameplay in the terminal.
+
+### Replayability:
+
+- Encourage repeated play by offering a fun and addictive game experience.
+
+---
+
 ## Existing Features
 
 ### Instructions
@@ -26,6 +42,12 @@ Tic Tac Toe is a classic two-player game implemented in Python. The objective is
 - If all cells are filled and no player has won, the game ends in a tie.
 
 ![Screenshot from heroku app](docs/instructions-game.png)
+
+### Board Game
+- After choosing to start a new game, the curremt state of the board is displayed
+
+![Screenshot from heroku app](docs/board-game.png)
+
 
 ### Win Message
 
