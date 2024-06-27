@@ -19,9 +19,9 @@ def print_instructions():
 
 def print_board(board):
     n = len(board)
-    for row in board:
+    for i, row in enumerate(board):
         print(" | ".join(row))
-        if row < n - 1:
+        if i < n - 1:
             print("-" * (n * 4 - 1))
 
 
@@ -107,7 +107,8 @@ def play_game():
 
 def main_menu():
     while True:
-        print("Welcome to Tic Tac Toe")
+        print("WELCOME TO")
+        print("Tic Tac Toe")
         print("\nWhat would you like to do now?")
         print("1 - Read Instructions")
         print("2 - Start a New Game")
