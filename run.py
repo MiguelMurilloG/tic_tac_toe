@@ -11,7 +11,7 @@ def print_board(board):
     n = len(board)
     for row in board:
         print(" | ".join(row))
-        print("-" * (n * 2 - 1))
+        print("-" * (n * 4 - 1))
 
 
 def check_winner(board, player):
@@ -32,7 +32,7 @@ def check_winner(board, player):
 def get_board_size():
     while True:
         try:
-            n = int(input("Enter the size of the board (n for n x n): "))
+            n = int(input("Enter the size of the board (positive integer n for n x n): "))
             if n <= 0:
                 raise ValueError("The size must be a positive integer.")
             return n
