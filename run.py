@@ -9,22 +9,20 @@ def print_welcome_message():
 
 def print_board(board):
     n = len(board)
-    for row in board:
-        print(" | ".join(row))
-        print("-" * (n * 4 - 1))
+    for row in range(n):
+        print(" | ".join(board[row]))
+        if row < n - 1:
+            print("-" * (n * 2 - 1))
 
 
 def check_winner(board, player):
     n = len(board)
-    for row in board:
-        if all([cell == player for cell in row]):
+    # Check rows and columns
+    for i in range(n):
+        if all([cell == player for cell in board[i]]) or all([board[j][i] == player for j in range(n)]):
             return True
-    for col in range(n):
-        if all([board[row][col] == player for row in range(n)]):
-            return True
-    if all([board[i][i] == player for i in range(n)]) or all(
-        [board[i][n - 1 - i] == player for i in range(n)]
-    ):
+    # Check diagonals
+    if all([board[i][i] == player for i in range(n)]) or all([board[i][n - 1 - i] == player for i in range(n)]):
         return True
     return False
 
@@ -32,27 +30,21 @@ def check_winner(board, player):
 def get_board_size():
     while True:
         try:
-            n = int(input("Enter the size of the board (positive integer n for n x n): "))
+            n = int(input("Enter the size of the board (positive integer n for an n x n board): "))
             if n <= 0:
                 raise ValueError("The size must be a positive integer.")
             return n
         except ValueError as e:
-            print(f"Invalid input: {e}. Please try again.")
+            print(f"Invalid input: {e}. Please enter a positive integer.")
 
 
 def get_move(player, board_size):
     while True:
         try:
-            row = int(input(
-                f"Player {player}, enter the row (0 to {board_size - 1}): "
-            ))
-            col = int(input(
-                f"Player {player}, enter the column (0 to {board_size - 1}): "
-            ))
+            row = int(input(f"Player {player}, enter the row (0 to {board_size - 1}): "))
+            col = int(input(f"Player {player}, enter the column (0 to {board_size - 1}): "))
             if row < 0 or row >= board_size or col < 0 or col >= board_size:
-                raise ValueError(
-                    f"Row and column must be between 0 and {board_size - 1}."
-                )
+                raise ValueError(f"Row and column must be between 0 and {board_size - 1}.")
             return row, col
         except ValueError as e:
             print(f"Invalid input: {e}. Please try again.")
@@ -81,27 +73,25 @@ def play_game():
     current_player = 0
 
     for turn in range(n * n):
-        print_board(board)
+        print_board(board)  # Print the board before each move
         row, col = get_move(players[current_player], n)
         if make_move(board, row, col, players[current_player]):
             if check_winner(board, players[current_player]):
-                print_board(board)
+                print_board(board)  # Print the board after the winning move
                 announce_winner(players[current_player])
                 return
             current_player = 1 - current_player
         else:
             print("This spot is already taken. Try again.")
 
-    print_board(board)
+    print_board(board)  # Print the board if it's a tie
     announce_tie()
 
 
 def tic_tac_toe():
     while True:
         play_game()
-        play_again = input(
-            "Do you want to play again? (y/n): "
-        ).strip().lower()
+        play_again = input("Do you want to play again? (y/n): ").strip().lower()
         if play_again != 'y':
             print("Thanks for playing Tic Tac Toe!")
             break
