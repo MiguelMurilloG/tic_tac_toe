@@ -1,9 +1,16 @@
+import random
+
+
 def print_welcome_message():
-    print("Welcome to Tic Tac Toe!")
-    print("Players will take turns to enter their moves.")
-    print("The first player to align their marks in a row, column, or "
-          "diagonal wins!")
-    print("Let's get started!\n")
+    print("WELCOME TO")
+    print("Tic-Tac-Toe")
+    print("\nUse this board as a guide when placing your X or O. Each number")
+    print("corresponds to a cell on the board.")
+    print("\n 1 | 2 | 3 ")
+    print(" ---------")
+    print(" 4 | 5 | 6 ")
+    print(" ---------")
+    print(" 7 | 8 | 9 \n")
 
 
 def print_instructions():
@@ -18,91 +25,77 @@ def print_instructions():
 
 
 def print_board(board):
-    n = len(board)
-    for row in range(n):
-        print(" | ".join(board[row]))
-        if row < n - 1:
-            print("-" * (n * 2 - 1))
+    print("\nHere is the active game board:\n")
+    for row in range(3):
+        print(" " + " | ".join(board[row]))
+        if row < 2:
+            print(" ---------")
 
 
 def check_winner(board, player):
-    n = len(board)
-    for row in board:
-        if all([cell == player for cell in row]):
-            return True
-    for col in range(n):
-        if all([board[row][col] == player for row in range(n)]):
-            return True
-    if (all([board[i][i] == player for i in range(n)]) or
-            all([board[i][n - 1 - i] == player for i in range(n)])):
-        return True
-    return False
+    win_conditions = [
+        [board[0][0], board[0][1], board[0][2]],
+        [board[1][0], board[1][1], board[1][2]],
+        [board[2][0], board[2][1], board[2][2]],
+        [board[0][0], board[1][0], board[2][0]],
+        [board[0][1], board[1][1], board[2][1]],
+        [board[0][2], board[1][2], board[2][2]],
+        [board[0][0], board[1][1], board[2][2]],
+        [board[0][2], board[1][1], board[2][0]],
+    ]
+    return [player, player, player] in win_conditions
 
 
-def get_board_size():
+def get_move(player, board):
     while True:
         try:
-            n = int(input(
-                "Enter the size of the board (positive integer n for an n x n "
-                "board): "))
-            if n <= 0:
-                raise ValueError("The size must be a positive integer.")
-            return n
-        except ValueError as e:
-            print(f"Invalid input: {e}. Please enter a positive integer.")
+            move = int(input(f"Where would you like to place your {player}? "))
+            if move < 1 or move > 9:
+                raise ValueError
+            row = (move - 1) // 3
+            col = (move - 1) % 3
+            if board[row][col] == " ":
+                return row, col
+            else:
+                print("\nInvalid entry: This cell is already occupied. "
+                      "Please enter another number.")
+        except ValueError:
+            print("\nInvalid entry: Please enter a valid number between 1 and 9.")
 
 
-def get_move(player, board_size):
-    while True:
-        try:
-            row = int(input(f"Player {player}, enter the row (0 to "
-                            f"{board_size - 1}): "))
-            col = int(input(f"Player {player}, enter the column (0 to "
-                            f"{board_size - 1}): "))
-            if row < 0 or row >= board_size or col < 0 or col >= board_size:
-                raise ValueError(f"Row and column must be between 0 and "
-                                 f"{board_size - 1}.")
-            return row, col
-        except ValueError as e:
-            print(f"Invalid input: {e}. Please try again.")
-
-
-def make_move(board, row, col, player):
-    if board[row][col] == " ":
-        board[row][col] = player
-        return True
-    return False
-
-
-def announce_winner(player):
-    print(f"Player {player} wins!")
-
-
-def announce_tie():
-    print("It's a tie!")
+def computer_move(board):
+    available_moves = [
+        (r, c) for r in range(3) for c in range(3) if board[r][c] == " "
+    ]
+    return random.choice(available_moves)
 
 
 def play_game():
     print_welcome_message()
-    n = get_board_size()
-    board = [[" " for _ in range(n)] for _ in range(n)]
+    board = [[" " for _ in range(3)] for _ in range(3)]
     players = ["X", "O"]
     current_player = 0
 
-    for turn in range(n * n):
-        print_board(board)  # Print the board before each move
-        row, col = get_move(players[current_player], n)
-        if make_move(board, row, col, players[current_player]):
-            if check_winner(board, players[current_player]):
-                print_board(board)  # Print the board after the winning move
-                announce_winner(players[current_player])
-                return
-            current_player = 1 - current_player
+    for turn in range(9):
+        print_board(board)
+        if players[current_player] == "X":
+            row, col = get_move("X", board)
         else:
-            print("This spot is already taken. Try again.")
+            print("\nComputer is making its move...\n")
+            row, col = computer_move(board)
+            print(f"Computer has chosen to place their O in cell {row * 3 + col + 1}.\n")
+        
+        board[row][col] = players[current_player]
 
-    print_board(board)  # Print the board if it's a tie
-    announce_tie()
+        if check_winner(board, players[current_player]):
+            print_board(board)
+            print(f"\nPlayer {players[current_player]} wins!\n")
+            return
+        
+        current_player = 1 - current_player
+
+    print_board(board)
+    print("\nIt's a tie!\n")
 
 
 def main_menu():
