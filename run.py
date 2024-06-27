@@ -19,10 +19,10 @@ def print_instructions():
 
 def print_board(board):
     n = len(board)
-    for i, row in enumerate(board):
-        print(" | ".join(row))
-        if i < n - 1:
-            print("-" * (n * 4 - 1))
+    for row in range(n):
+        print(" | ".join(board[row]))
+        if row < n - 1:
+            print("-" * (n * 2 - 1))
 
 
 def check_winner(board, player):
