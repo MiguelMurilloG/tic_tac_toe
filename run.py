@@ -15,9 +15,9 @@ def print_welcome_message():
 
 def print_instructions():
     print("Instructions:")
-    print("1. Choose the size of the board (n x n).")
+    print("1. The game is played on a 3x3 grid.")
     print("2. Players take turns to place their mark (X or O) on the board.")
-    print("3. The first player to get n marks in a row (horizontally, "
+    print("3. The first player to get three marks in a row (horizontally, "
           "vertically, or diagonally) wins.")
     print("4. If all cells are filled without any player winning, "
           "the game is a tie.")
