@@ -76,12 +76,6 @@ Tic Tac Toe is a classic two-player game implemented in Python. The objective is
 - Add different game modes such as Classic, Timed, and Challenge modes.
 - Timed mode could limit the amount of time a player has to make a move.
 
-### AI Difficulty Levels:
-
-- Implement multiple levels of AI difficulty: Easy, Medium, Hard.
-- Adjust the computer's strategy based on the selected difficulty level.
-
-
 ---
 ## Bugs
 - Corrected the input validation function structure.
