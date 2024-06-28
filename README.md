@@ -36,10 +36,13 @@ Tic Tac Toe is a classic two-player game implemented in Python. The objective is
 
 ### Instructions
 
-- Choose the size of the board (e.g., 3 for a 3x3 board).
+- The game is playing on a 3x3 board
 - Players take turns entering their moves by specifying the row and column.
 - The first player to get their marks in a row, column, or diagonal wins.
 - If all cells are filled and no player has won, the game ends in a tie.
+- You can choose the difficulty level for the computer opponent.
+   - 'easy' for a random move by the computer.
+   - 'hard' for a challenging move by the computer using the minimax algorithm.
 
 ![Screenshot from heroku app](docs/instructions-game.png)
 
