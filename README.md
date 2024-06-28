@@ -85,7 +85,7 @@ Tic Tac Toe is a classic two-player game implemented in Python. The objective is
 
 
 ## Remaining Bugs
-No known bugs.
+- No known bugs.
 
 ## Testing
 
