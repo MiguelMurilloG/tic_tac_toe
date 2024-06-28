@@ -21,6 +21,10 @@ def print_instructions():
           "vertically, or diagonally) wins.")
     print("4. If all cells are filled without any player winning, "
           "the game is a tie.")
+    print("5. You can choose the difficulty level for the computer opponent.")
+    print("   - 'easy' for a random move by the computer.")
+    print("   - 'hard' for a challenging move by the computer using the "
+          "minimax algorithm.")
     print()
 
 

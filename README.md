@@ -48,6 +48,8 @@ Tic Tac Toe is a classic two-player game implemented in Python. The objective is
 
 ![Screenshot from heroku app](docs/board-game.png)
 
+### Level Difficulty
+
 
 ### Win Message
 
